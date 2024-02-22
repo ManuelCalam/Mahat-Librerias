@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <input type="checkbox" id="click">
+            <label for="click" class="btn">
+                <i class="fa-solid fa-bars"></i>
+            </label>
+            <a href="#"><img src="Mahat_Logo.png" class="Logo"></a>
+
+
+            <ul>             
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="Registrar.html">Registrarse</a></li>
+                <li><a href="Productos.php">Productos</a></li>
+                <li><a href="index.php">Inicio</a></li>   
+            </ul>
+        </nav>
+    </header>
+
+    <section class="mainSection" id="singInSection">
+
+        <h2>Registro</h2>
+        <form action="php/Registro.php" method="POST">
+            <div>
+                
+                <input type="text" id="Nombres" name="Nombres" placeholder="Nombre"> <br>
+
+                <input type="text" id="Apellidos" name="Apellidos" placeholder="Apellidos"> <br>
+
+                <input type="email" id="correo" name="Correo" placeholder="Correo"> <br>
+
+                <input type="number" id="Edad" name="Edad" placeholder="Edad"> <br>
+
+                <input type="text" id="Direccion" name="Direccion" placeholder="Direccion"> <br>
+
+                <input type="text" id="Celular" name="Celular" placeholder="Numero de telefono"> <br>
+
+                <input type="text" id="Usuario" name="Usuario" placeholder="Usuario"> <br>
+
+                <input type="password", id="Clave" name="Clave" placeholder="Contraseña">
+                    
+            </div>
+
+            <div>
+                <button id="loginButton" type="submit">Registrar</button>
+            </div>
+        </form>
+
+        
+    </section>
+
+    <footer>
+            <div class="footerDiv">Jose Manuel Calam Manzanilla</div>
+            <div class="footerDiv">4to P</div>
+            <div class="footerDiv">Desarrollo Web | Bases de Datos</div>      
+    </footer>
+</body>
+</html>
