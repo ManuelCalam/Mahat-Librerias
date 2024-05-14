@@ -140,9 +140,10 @@ function getCarritoProducts(){
         //Attachments
         $mail->addAttachment($filename, 'Detalles_Pedido.pdf');   //Optional name
     
-        //header("location: ../index.php");
-        echo '<script>window.location.href="../index.php";</script>';
+        header("location: ../index.php");
+        //echo '<script>window.location.href="../index.php";</script>';
 
+        
 
         $mail->send();
 
