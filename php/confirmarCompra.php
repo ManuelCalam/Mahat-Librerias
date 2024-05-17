@@ -7,8 +7,10 @@
 <?php
 
 function getCarritoProducts(){
-    echo("Conexion php");
     include 'conexion.php';
+
+    echo("Conexion php");
+
 
     $idUsuario = $_SESSION['idUsuario'];
     $sql = "SELECT productos.*, carrito.cantidad FROM carrito
