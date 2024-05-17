@@ -7,9 +7,10 @@
 <?php
 
 function getCarritoProducts(){
-    include 'conexion.php';
 
-    echo("Conexion php");
+    try {
+        include 'conexion.php';
+
 
 
     $idUsuario = $_SESSION['idUsuario'];
@@ -29,6 +30,10 @@ function getCarritoProducts(){
     $con->close();
 
     return $productosCarrito;
+    } catch (\Throwable $th) {
+        throw $th;
+    }
+    
 }
 
 ?>
