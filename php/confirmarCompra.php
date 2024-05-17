@@ -31,7 +31,7 @@ function getCarritoProducts(){
 
     return $productosCarrito;
     } catch (\Throwable $th) {
-        throw $th;
+        echo("algo raro");
     }
     
 }
@@ -157,7 +157,7 @@ function getCarritoProducts(){
 
 
         echo 'Message has been sent';
-        unlink($filename);
+        //unlink($filename);
 
 
     } catch (Exception $e) {
