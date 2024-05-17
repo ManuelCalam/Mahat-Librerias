@@ -7,6 +7,7 @@
 <?php
 
 function getCarritoProducts(){
+    echo("Conexion php");
     include 'conexion.php';
 
     $idUsuario = $_SESSION['idUsuario'];
