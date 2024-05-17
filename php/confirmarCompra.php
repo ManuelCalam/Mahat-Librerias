@@ -7,33 +7,33 @@
 <?php
 
 function getCarritoProducts(){
-
     try {
         include 'conexion.php';
+        $idUsuario = $_SESSION['idUsuario'];
+        $sql = "SELECT productos.*, carrito.cantidad FROM carrito
+                INNER JOIN productos ON carrito.producto_id = productos.id
+                WHERE carrito.usuario_id = $idUsuario";
+        $result = $con->query($sql);
 
+        $productosCarrito = array();
 
-
-    $idUsuario = $_SESSION['idUsuario'];
-    $sql = "SELECT productos.*, carrito.cantidad FROM carrito
-            INNER JOIN productos ON carrito.producto_id = productos.id
-            WHERE carrito.usuario_id = $idUsuario";
-    $result = $con->query($sql);
-
-    $productosCarrito = array();
-
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $productosCarrito[] = $row;
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $productosCarrito[] = $row;
+            }
         }
-    }
 
-    $con->close();
+        $con->close();
 
-    return $productosCarrito;
-    } catch (\Throwable $th) {
-        echo("algo raro");
+        return $productosCarrito;
+    } catch (Exception $e) {
+        // Registra el error en el archivo de registro de PHP
+        error_log("Error en getCarritoProducts(): " . $e->getMessage());
+        // También puedes imprimir el mensaje de error si lo deseas
+        echo "Error en getCarritoProducts(): " . $e->getMessage();
+        // Retorna un valor por defecto o maneja el error según sea necesario
+        return array();
     }
-    
 }
 
 ?>
