@@ -42,6 +42,19 @@ function getCarritoProducts(){
 <?php
     require "../vendor/autoload.php";
     use Fpdf\Fpdf;
+    use Sabre\DAV\Client;
+
+    $webdav_url = 'http://10.0.0.4/';
+    $webdav_user = 'calam';
+    $webdav_pass = '1234';
+
+    $settings = [
+        'baseUri' => $webdav_url,
+        'userName' => $webdav_user,
+        'password' => $webdav_pass,
+    ];
+
+    $client = new Client($settings);
 
 
     // Creamos una instancia de FPDF
@@ -156,6 +169,18 @@ function getCarritoProducts(){
         
 
         $mail->send();
+
+        try {
+            $pdf_data = file_get_contents($filename);
+            $remote_path = $filename; // Puedes cambiar esto a una ruta específica en tu servidor WebDAV
+        
+            $client->request('PUT', $remote_path, $pdf_data);
+            echo "Archivo PDF subido correctamente a WebDAV.";
+        } catch (Exception $e) {
+            // Registra el error en el archivo de registro
+            error_log("Error al subir el archivo PDF a WebDAV: " . $e->getMessage(), 3, "/ruta/a/tu/archivo_de_log_php.log");
+            echo "Error al subir el archivo PDF a WebDAV: " . $e->getMessage();
+        }
 
 
         echo 'Message has been sent';
